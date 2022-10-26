@@ -157,7 +157,8 @@ function fun() {
     const num = document.getElementById('numbers');
     const funny = document.getElementById('funnypassword');
     const strong = document.getElementById('strongpassword');
-
+    if(passLen.length == 0 && funny.checked == false)
+        alert("please Enter length");
     if (parseInt(passLen) < 1 || parseInt(passLen) > 20)
         alert("Enter password length between 1 and 20 both inclusive");
     if (num.checked == true)
