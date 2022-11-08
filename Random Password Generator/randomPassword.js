@@ -159,7 +159,7 @@ function fun() {
     const strong = document.getElementById('strongpassword');
     if(passLen.length == 0 && funny.checked == false)
         alert("please Enter length");
-    if (parseInt(passLen) < 1 || parseInt(passLen) > 20)
+    else if (parseInt(passLen) < 1 || parseInt(passLen) > 20)
         alert("Enter password length between 1 and 20 both inclusive");
     if (num.checked == true)
         btn.addEventListener('click', password.generatePassword(passLen));
