@@ -161,7 +161,7 @@ function fun() {
         alert("please Enter length");
     else if (parseInt(passLen) < 1 || parseInt(passLen) > 20)
         alert("Enter password length between 1 and 20 both inclusive");
-    if (num.checked == true)
+    else if (num.checked == true)
         btn.addEventListener('click', password.generatePassword(passLen));
     else if (funny.checked == true)
         btn.addEventListener('click', password.generateFunnyPassword());
