@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sai Santosh Kumar Battula — Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary: #5b7a9c;
+      --primary-light: #7b96b5;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --bg-main: #ffffff;
+      --bg-sidebar: #f7f9fb;
+      --border: #e2e8f0;
+      --accent-bg: #edf2f7;
+      --accent-text: #4a5568;
+      --header-bg: #6b8caf;
+    }
+    
+    html, body {
+      height: 100%;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #8b9dc3 0%, #9bacc4 100%);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+      line-height: 1.5;
+      overflow-y: auto;
+    }
+    
+    .resume-container {
+      width: 100%;
+      max-width: 1100px;
+      background: var(--bg-main);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    /* Header Section */
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--header-bg) 100%);
+      color: white;
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    
+    .name-section h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+    }
+    
+    .job-title {
+      font-size: 15px;
+      opacity: 0.95;
+      font-weight: 500;
+    }
+    
+    .job-title i {
+      margin-right: 6px;
+      font-size: 13px;
+    }
+    
+    .contact-header {
+      text-align: right;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    
+    .contact-header > div {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    
+    .contact-header i {
+      width: 16px;
+      text-align: center;
+      opacity: 0.9;
+    }
+    
+    .contact-header a {
+      color: white;
+      text-decoration: none;
+      opacity: 0.9;
+    }
+    
+    .contact-header a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    
+    /* Two Column Layout */
+    .content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 0;
+    }
+    
+    .left-column {
+      padding: 24px 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      border-right: 1px solid var(--border);
+    }
+    
+    .right-column {
+      background: var(--bg-sidebar);
+      padding: 24px 28px;
+    }
+    
+    .section {
+      margin-bottom: 20px;
+    }
+    
+    .full-width {
+      grid-column: 1 / -1;
+    }
+    
+    .section-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .section-title i {
+      font-size: 13px;
+    }
+    
+    /* Skills */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    
+    .skill-tag {
+      background: var(--accent-bg);
+      color: var(--accent-text);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+    }
+    
+    /* Experience */
+    .experience-item {
+      margin-bottom: 16px;
+    }
+    
+    .job-position {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .job-position i {
+      color: var(--primary-light);
+      font-size: 12px;
+    }
+    
+    .job-meta {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .job-meta i {
+      font-size: 10px;
+    }
+    
+    .responsibilities {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .responsibilities li {
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 6px;
+      color: var(--text-primary);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    
+    .responsibilities li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--primary-light);
+      font-weight: 700;
+      font-size: 10px;
+    }
+    
+    /* Projects */
+    .project-item {
+      margin-bottom: 14px;
+    }
+    
+    .project-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .project-title i {
+      color: var(--primary-light);
+      font-size: 11px;
+    }
+    
+    .project-tech {
+      font-size: 10px;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 5px;
+    }
+    
+    .project-description {
+      font-size: 12px;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+    
+    /* Education */
+    .education-item {
+      font-size: 12px;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+    
+    .education-meta {
+      color: var(--text-secondary);
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .education-meta i {
+      font-size: 10px;
+    }
+    
+    /* Sidebar */
+    .sidebar-section {
+      margin-bottom: 20px;
+    }
+    
+    .sidebar-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .sidebar-title i {
+      font-size: 12px;
+    }
+    
+    .sidebar-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .sidebar-list li {
+      margin-bottom: 8px;
+      padding-left: 14px;
+      position: relative;
+      font-size: 12px;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+    
+    .sidebar-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primary-light);
+      font-weight: 700;
+    }
+    
+    .contact-info div {
+      margin-bottom: 10px;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    
+    .contact-info strong {
+      color: var(--text-primary);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 3px;
+    }
+    
+    .contact-info strong i {
+      color: var(--primary-light);
+      width: 14px;
+    }
+    
+    .contact-info a {
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-block;
+      margin-left: 20px;
+    }
+    
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Responsive */
+    @media (max-width: 1000px) {
+      .content-wrapper {
+        grid-template-columns: 1fr;
+      }
+      
+      .left-column {
+        grid-template-columns: 1fr;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      
+      .contact-header {
+        text-align: left;
+      }
+      
+      .contact-header > div {
+        justify-content: flex-start;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .resume-container {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="name-section">
+        <h1>Sai Santosh Kumar Battula</h1>
+        <div class="job-title"><i class="fas fa-user-tie"></i>Senior Systems Engineer · Hyderabad, India</div>
+      </div>
+      <div class="contact-header">
+        <div><i class="fas fa-phone"></i><strong>+91 93980 49275</strong></div>
+        <div><i class="fas fa-envelope"></i>saisantoshkumarbattula@gmail.com</div>
+        <div><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/sai-santosh-kumar-battula" target="_blank">linkedin.com/in/sai-santosh-kumar-battula</a></div>
+        <div><i class="fab fa-github"></i><a href="https://github.com/saisantoshkumarbattula" target="_blank">github.com/saisantoshkumarbattula</a></div>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <!-- Left Column (Two sub-columns) -->
+      <div class="left-column">
+        <!-- Technical Skills - Full Width -->
+        <section class="section full-width">
+          <h2 class="section-title"><i class="fas fa-code"></i>Technical Skills</h2>
+          <div class="skills-grid">
+            <span class="skill-tag">Java (Core & Advanced)</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Bash / Shell Scripting</span>
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">Spring MVC</span>
+            <span class="skill-tag">Spring Data JPA</span>
+            <span class="skill-tag">Spring Security</span>
+            <span class="skill-tag">Hibernate</span>
+            <span class="skill-tag">RESTful APIs</span>
+            <span class="skill-tag">Microservices</span>
+            <span class="skill-tag">MySQL / PostgreSQL / H2</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Jenkins</span>
+            <span class="skill-tag">Git / Maven</span>
+            <span class="skill-tag">Tomcat / WebLogic</span>
+            <span class="skill-tag">IBM MQ</span>
+            <span class="skill-tag">Postman / Swagger</span>
+            <span class="skill-tag">SSL / keytool / OpenSSL</span>
+          </div>
+        </section>
+
+        <!-- Experience - Left -->
+        <section class="section">
+          <h2 class="section-title"><i class="fas fa-briefcase"></i>Experience</h2>
+          
+          <div class="experience-item">
+            <div class="job-position"><i class="fas fa-building"></i>Senior Systems Engineer — Infosys</div>
+            <div class="job-meta"><i class="fas fa-calendar-alt"></i>January 2024 – Present · Hyderabad, India</div>
+            <ul class="responsibilities">
+              <li>Architected Spring Boot RESTful microservices automating multi-environment workflows, reducing processing time by 40% across 5+ production environments.</li>
+              <li>Built enterprise monitoring dashboard with Spring Boot, MySQL, and JPA tracking SSL expiries, server health, and access logs for 50+ daily users.</li>
+              <li>Engineered email automation with JavaMailSender reducing coordination delays by 70% through dynamic notifications.</li>
+              <li>Enhanced scalability via multi-node Tomcat cluster with load balancing, achieving 99.9% uptime.</li>
+              <li>Implemented RBAC using Spring Security and integrated Swagger/Actuator for API documentation and observability.</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="job-position"><i class="fas fa-building"></i>Systems Engineer — Infosys</div>
+            <div class="job-meta"><i class="fas fa-calendar-alt"></i>January 2023 – December 2023 · Hyderabad, India</div>
+            <ul class="responsibilities">
+              <li>Automated SSL lifecycle management (CSR, renewal, keystore) using OpenSSL, keytool, and DigiCert, reducing manual effort by 60%.</li>
+              <li>Developed Shell automation for log monitoring, SSO validation, and health checks across multiple environments.</li>
+              <li>Built Java + Selenium utility automating Oracle Access Manager session resets, reducing turnaround time by 80%.</li>
+              <li>Configured IBM MQ monitoring with proactive alerting scripts ensuring message delivery SLA compliance.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Projects & Education - Right -->
+        <section class="section">
+          <h2 class="section-title"><i class="fas fa-project-diagram"></i>Key Projects</h2>
+          
+          <div class="project-item">
+            <div class="project-title"><i class="fas fa-laptop-code"></i>AppTech Operational Dashboard</div>
+            <div class="project-tech">Spring Boot, MySQL, JPA, RESTful APIs · Jan 2024 – Present</div>
+            <div class="project-description">Designed centralized backend exposing REST APIs for SSL monitoring, server uptime, and SOP management with responsive frontend; deployed on multi-node Tomcat cluster with load balancing.</div>
+          </div>
+
+          <div class="project-item">
+            <div class="project-title"><i class="fas fa-laptop-code"></i>Form Controller Automation</div>
+            <div class="project-tech">Spring Boot, JPA, JavaMailSender · Mar 2024 – Present</div>
+            <div class="project-description">Developed RESTful approval workflow system with layered architecture; integrated form tracking with dashboard APIs and automated email notifications.</div>
+          </div>
+
+          <div style="margin-top: 20px;">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i>Education</h2>
+            <div class="education-item"><strong>Bachelor of Technology in Computer Science</strong></div>
+            <div class="education-item">Annamacharya Institute of Technology and Sciences, JNTUH University</div>
+            <div class="education-meta"><i class="fas fa-calendar-alt"></i>Aug 2018 – Sep 2022 · Hyderabad, India</div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right Sidebar -->
+      <aside class="right-column">
+        <div class="sidebar-section">
+          <h3 class="sidebar-title"><i class="fas fa-address-card"></i>Contact</h3>
+          <div class="contact-info">
+            <div>
+              <strong><i class="fas fa-phone"></i>Phone</strong>
+              +91 93980 49275
+            </div>
+            <div>
+              <strong><i class="fas fa-envelope"></i>Email</strong>
+              <a href="mailto:saisantoshkumarbattula@gmail.com">saisantoshkumarbattula@gmail.com</a>
+            </div>
+            <div>
+              <strong><i class="fab fa-linkedin"></i>LinkedIn</strong>
+              <a href="https://linkedin.com/in/sai-santosh-kumar-battula" target="_blank">linkedin.com/in/sai-santosh-kumar-battula</a>
+            </div>
+            <div>
+              <strong><i class="fab fa-github"></i>GitHub</strong>
+              <a href="https://github.com/saisantoshkumarbattula" target="_blank">saisantoshkumarbattula</a>
+            </div>
+            <div>
+              <strong><i class="fas fa-map-marker-alt"></i>Location</strong>
+              Hyderabad, India
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-title"><i class="fas fa-tools"></i>Tools & DevOps</h3>
+          <ul class="sidebar-list">
+            <li>Docker, Jenkins CI/CD</li>
+            <li>Git, Maven</li>
+            <li>Tomcat, Oracle WebLogic</li>
+            <li>IBM MQ</li>
+            <li>Load Balancing</li>
+            <li>Multi-node Clustering</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-title"><i class="fas fa-vial"></i>API & Testing</h3>
+          <ul class="sidebar-list">
+            <li>Postman</li>
+            <li>Swagger / OpenAPI</li>
+            <li>Spring Boot Actuator</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-title"><i class="fas fa-shield-alt"></i>Security</h3>
+          <ul class="sidebar-list">
+            <li>SSL/TLS Certificate Management</li>
+            <li>JKS, DigiCert</li>
+            <li>keytool, OpenSSL</li>
+            <li>RBAC, Spring Security</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-title"><i class="fas fa-trophy"></i>Awards & Certifications</h3>
+          <ul class="sidebar-list">
+            <li>RAISE Award (Infosys): Exceptional performance & ownership</li>
+            <li>Best Performer Award: Automation excellence</li>
+            <li>Infosys Certified Java Developer</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>
