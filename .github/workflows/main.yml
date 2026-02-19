@@ -2,6 +2,8 @@ name: Backup and Convert Resume
 
 on:
   push:
+    branches:
+      - main
     paths:
       - "Sai_Santosh_Kumar_Battula_Resume.docx"
 
@@ -13,16 +15,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Install LibreOffice
         run: sudo apt-get update && sudo apt-get install -y libreoffice
 
-      - name: Create backup folder if not exists
+      - name: Create backup folder
         run: mkdir -p .old
 
-      - name: Backup existing PDF if present
+      - name: Backup existing PDF
         run: |
           if [ -f Sai_Santosh_Kumar_Battula_Resume.pdf ]; then
             TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
@@ -37,5 +38,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add .
-          git commit -m "Backup old resume and generate new PDF" || echo "No changes to commit"
+          git commit -m "Backup old resume and generate new PDF" || echo "No changes"
           git push
