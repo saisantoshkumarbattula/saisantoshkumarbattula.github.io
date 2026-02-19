@@ -1,0 +1,29 @@
+name: Convert Resume to PDF
+
+on:
+  push:
+    paths:
+      - "resume.docx"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install LibreOffice
+        run: sudo apt-get update && sudo apt-get install -y libreoffice
+
+      - name: Convert DOCX to PDF
+        run: |
+          libreoffice --headless --convert-to pdf resume.docx --outdir .
+
+      - name: Commit PDF
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add resume.pdf
+          git commit -m "Auto-generated resume PDF"
+          git push
