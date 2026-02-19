@@ -15,7 +15,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # ✅ Validate DOCX exists
+      - name: Validate DOCX file exists
+        run: |
+          if [ ! -f "Sai_Santosh_Kumar_Battula_Resume.docx" ]; then
+            echo "DOCX file not found. Exiting workflow."
+            exit 1
+          fi
 
       - name: Install LibreOffice
         run: sudo apt-get update && sudo apt-get install -y libreoffice
@@ -23,20 +32,30 @@ jobs:
       - name: Create backup folder
         run: mkdir -p .old
 
+      # ✅ Backup existing PDF only if exists
       - name: Backup existing PDF
         run: |
-          if [ -f Sai_Santosh_Kumar_Battula_Resume.pdf ]; then
+          if [ -f "Sai_Santosh_Kumar_Battula_Resume.pdf" ]; then
             TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
             mv Sai_Santosh_Kumar_Battula_Resume.pdf .old/Sai_Santosh_Kumar_Battula_Resume_$TIMESTAMP.pdf
+            echo "Old PDF backed up successfully."
+          else
+            echo "No existing PDF found. Skipping backup."
           fi
 
       - name: Convert DOCX to PDF
-        run: libreoffice --headless --convert-to pdf Sai_Santosh_Kumar_Battula_Resume.docx --outdir .
+        run: |
+          libreoffice --headless --convert-to pdf Sai_Santosh_Kumar_Battula_Resume.docx --outdir .
+          
+          if [ ! -f "Sai_Santosh_Kumar_Battula_Resume.pdf" ]; then
+            echo "PDF conversion failed."
+            exit 1
+          fi
 
       - name: Commit changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add .
-          git commit -m "Backup old resume and generate new PDF" || echo "No changes"
+          git commit -m "Backup old resume and generate new PDF" || echo "No changes to commit"
           git push
