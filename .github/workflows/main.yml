@@ -1,9 +1,12 @@
-name: Convert Resume to PDF
+name: Backup and Convert Resume
 
 on:
   push:
     paths:
-      - "resume.docx"
+      - "Sai_Santosh_Kumar_Battula_Resume.docx"
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -16,14 +19,23 @@ jobs:
       - name: Install LibreOffice
         run: sudo apt-get update && sudo apt-get install -y libreoffice
 
-      - name: Convert DOCX to PDF
-        run: |
-          libreoffice --headless --convert-to pdf resume.docx --outdir .
+      - name: Create backup folder if not exists
+        run: mkdir -p .old
 
-      - name: Commit PDF
+      - name: Backup existing PDF if present
+        run: |
+          if [ -f Sai_Santosh_Kumar_Battula_Resume.pdf ]; then
+            TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+            mv Sai_Santosh_Kumar_Battula_Resume.pdf .old/Sai_Santosh_Kumar_Battula_Resume_$TIMESTAMP.pdf
+          fi
+
+      - name: Convert DOCX to PDF
+        run: libreoffice --headless --convert-to pdf Sai_Santosh_Kumar_Battula_Resume.docx --outdir .
+
+      - name: Commit changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add resume.pdf
-          git commit -m "Auto-generated resume PDF"
+          git add .
+          git commit -m "Backup old resume and generate new PDF" || echo "No changes to commit"
           git push
